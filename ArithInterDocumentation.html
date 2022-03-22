@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Arithimetic Interpreter Documentation</title>
+<style>
+   body{
+      background-color: rgb(30, 30, 30);
+      margin: 0;
+   }
+   h1,h2,h3,h4,h5{
+      font-family: sans-serif;
+      color: rgb(200, 200, 200);
+      padding-left: 10%;
+      padding-right: 10%
+   }
+   p{
+      font-family: sans-serif;
+      color: rgb(200, 200, 200);
+      font-size: 18px;
+      padding-left: 10%;
+      padding-right: 10%;
+   }
+   strong{
+      color: rgb(100, 200, 200);
+   }
+</style>
+</head>
+
+<body>
+   <h1 style="text-align:center;">Arithimetic Interpreter Documentation</h1>
+   <h3 style="text-align:center;">Made By: Paul / Github: PaulOthar</h3>
+   
+   <br><br>
+   <h4>Quick Description:</h4>
+   <p>
+      This Arithimetic Interpreter is a Simple Algorythm That is Able To Read a String Containing an Equation, and Transforms it into a "Node" Object, Able To Solve To Acquire The Desired Result 
+   </p>
+   
+   <br><br>
+   
+   <h4>How To Use:</h4>
+   <p>
+      For Your Convenience, i made a Class With Static Methods that can be Called To Run The Process Witheout The Need for Instancing Stuff.
+   </p>
+   
+   <br>
+   
+   <h4>Methods:</h4>
+   <p>
+      <strong>(Returner.BuildTokensFromEquation)</strong>:
+      <br><br>Recives a Equation (String) and a Array Of Variables (Variable).
+      <br>Returns a Array of Tokens (Token), That Can Be Later Turned Into a Equation.
+      <br><br><strong>(Returner.BuildNodeFromTokens)</strong>:
+      <br><br>Recives a Array of Tokens (Token).
+      <br>Returns a Single Node (Node), That Can Be Ran With The Inner Method (.solve()) Containing All The Other Nodes Necessary To Complete The Execution of The Equation.
+      <br><br><strong>(Returner.BuildNodeFromEquation)</strong>:
+      <br><br>Recives a Equation (String) and a Array Of Variables (Variable).
+      <br>Returns a Single Node (Node), That Can Be Ran With The Inner Method (.solve()) Containing All The Other Nodes Necessary To Complete The Execution of The Equation.
+   </p>
+   
+   <h4>Disclaimer:</h4>
+   <p>
+      1:Even a Single Number is Considered an Equation.<br><br>
+      2:Every Result Yields a Array.<br><br>
+      3:Operations Including Multiple Values Will Be Treated as Each of One Equation Numbers By Each of Other Equation Numbers.<br>
+      Example 1:<br>
+      [1,2,3] + 5<br>
+      [1+5 , 2+5 , 3+5]<br>
+      [6,7,8]<br><br>
+      
+      Example 2:<br>
+      [0,1,2] - [3,4,5]<br>
+      [0-3 , 0-4 , 0-5 , 1-3 , 1-4 , 1-5 , 2-3 , 2-4 , 2-5]<br>
+      [-3,-4,-5,-2,-3,-4,-1,-2,-3]
+   </p>
+   
+   <br><br>
+   <h4>Suported Operations:</h4>
+   <p>
+      <strong>Negativation</strong> :
+      <br>
+      Transforms a Positive Number into Negative, or a Negative Into Positive
+      <br>
+      Recives : " - (Equation) "
+      <br>
+      Returns : " - (Equation)" or " (Equation) "
+      <br><br>
+      Example:
+      <br>
+      Input: -(5)
+      <br>
+      Output: -5
+      <br><br><br>
+      
+      <strong>Negation</strong> :
+      <br>
+      Transforms a Number Highter Than Zero, in Zero, And Zero in One
+      <br>
+      Recives : " ! (Equation) "
+      <br>
+      Returns : " 0 " or " 1 "
+      <br><br>
+      Example:
+      <br>
+      Input: !(1)
+      <br>
+      Output: 0
+      <br><br><br>
+      
+      <strong>Square Root</strong> :
+      <br>
+      Calculates The Square Root of a Number
+      <br>
+      Recives : " sqrt (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: sqrt(9)
+      <br>
+      Output: 3
+      <br><br><br>
+      
+      <strong>Sine</strong> :
+      <br>
+      Calculate The Sine of a Number in Radians
+      <br>
+      Recives : " sin (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: sin(1)
+      <br>
+      Output: 0.8414709848078965
+      <br><br><br>
+      
+      <strong>Cossine</strong> :
+      <br>
+      Calculate The Cossine of a Number in Radians
+      <br>
+      Recives : " cos (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: cos(1)
+      <br>
+      Output: 0.5403023058681398
+      <br><br><br>
+      
+      <strong>Tangent</strong> :
+      <br>
+      Calculate The Tangent of a Number in Radians
+      <br>
+      Recives : " tan (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: tan(1)
+      <br>
+      Output: 1.5574077246549023
+      <br><br><br>
+      
+      <strong>Arc Sine</strong> :
+      <br>
+      Calculate The Arc Sine of a Number (Returned Value is in Radians)
+      <br>
+      Recives : " arcsin (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: arcsin(1)
+      <br>
+      Output: 1.5707963267948966
+      <br><br><br>
+      
+      <strong>Arc Cossine</strong> :
+      <br>
+      Calculate The Arc Cossine of a Number (Returned Value is in Radians)
+      <br>
+      Recives : " arccos (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: arccos(1)
+      <br>
+      Output: 0
+      <br><br><br>
+      
+      <strong>Arc Tangent</strong> :
+      <br>
+      Calculate The Arc Tangent of a Number (Returned Value is in Radians)
+      <br>
+      Recives : " arctan (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: arctan(1)
+      <br>
+      Output: 0.7853981633974483
+      <br><br><br>
+      
+      <strong>Degree To Radians Conversion</strong> :
+      <br>
+      Converts a Number in Degrees to Radians
+      <br>
+      Recives : " rad (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: rad(90)
+      <br>
+      Output: 1.5707963267948966
+      <br><br><br>
+      
+      <strong>Degree To Radians Conversion</strong> :
+      <br>
+      Converts a Number in Degrees to Radians
+      <br>
+      Recives : " rad (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: rad(90)
+      <br>
+      Output: 1.5707963267948966
+      <br><br><br>
+      
+      <strong>Radians To Degrees Conversion</strong> :
+      <br>
+      Converts a Number in Radians to Degrees
+      <br>
+      Recives : " deg (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: deg(1.5707963267948966)
+      <br>
+      Output: 90
+      <br><br><br>
+      
+      <strong>Length of a Array</strong> :
+      <br>
+      Returns How Many Elements is inside an Array
+      <br>
+      Recives : " len (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: len [1,38,10,10,11,10,13,14,9]
+      <br>
+      Output: 9
+      <br><br><br>
+      
+      <strong>Summation of a Array</strong> :
+      <br>
+      Returns the summation of all elements on a Array
+      <br>
+      Recives : " sum (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: sum [1,38,10,10,11,10,13,14,9]
+      <br>
+      Output: 116
+      <br><br><br>
+      
+      <strong>Mean of a Array</strong> :
+      <br>
+      Returns the average value of all the elements on a Array
+      <br>
+      Recives : " mean (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: mean [1,38,10,10,11,10,13,14,9]
+      <br>
+      Output: 12.8888888889
+      <br><br><br>
+      
+      <strong>Medium of a Array</strong> :
+      <br>
+      Returns the Middle Element of an Array (Unsorted)
+      <br>
+      Recives : " medium (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: median [1,38,10,10,11,10,13,14,9]
+      <br>
+      Output: 11
+      <br><br><br>
+      
+      <strong>Mode of a Array</strong> :
+      <br>
+      Returns the Element on a Array That is More Frequent
+      <br>
+      Recives : " mode (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: mode [1,38,10,10,11,10,13,14,9]
+      <br>
+      Output: 10
+      <br><br><br>
+      
+      <strong>Addition</strong> :
+      <br>
+      Returns the Addition Between Two Values
+      <br>
+      Recives : " (Equation) + (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: 1 + 1
+      <br>
+      Output: 2
+      <br><br><br>
+      
+      <strong>Subtraction</strong> :
+      <br>
+      Returns the Subtraction Between Two Values
+      <br>
+      Recives : " (Equation) - (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: 1-1
+      <br>
+      Output: 0
+      <br><br><br>
+      
+      <strong>Division</strong> :
+      <br>
+      Returns the Division of a Value by other value
+      <br>
+      Recives : " (Equation) / (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: 5/2
+      <br>
+      Output: 2.5
+      <br><br><br>
+      
+      <strong>Multiplication</strong> :
+      <br>
+      Returns the Multiplication Between Two Value
+      <br>
+      Recives : " (Equation) * (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: 5*2
+      <br>
+      Output: 10
+      <br><br><br>
+      
+      <strong>Modulus</strong> :
+      <br>
+      Returns the Rest of a Division
+      <br>
+      Recives : " (Equation) % (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: 2.5 % 1
+      <br>
+      Output: 0.5
+      <br><br><br>
+      
+      <strong>Exponentiation</strong> :
+      <br>
+      Returns the Exponentiation of a Value by other value
+      <br>
+      Recives : " (Equation) ** (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: 3**2
+      <br>
+      Output: 9
+      <br><br><br>
+      
+      <strong>Is Equal (Comparison)</strong> :
+      <br>
+      Compares if a Number is Equal Another
+      <br>
+      Recives : " (Equation) = (Equation) "
+      <br>
+      Returns : " 0 " or " 1 "
+      <br><br>
+      Example:
+      <br>
+      Input: 1+3 = 4
+      <br>
+      Output: 1
+      <br><br><br>
+      
+      <strong>Is Different (Comparison)</strong> :
+      <br>
+      Compares if a Number is Different from Another
+      <br>
+      Recives : " (Equation) != (Equation) "
+      <br>
+      Returns : " 0 " or " 1 "
+      <br><br>
+      Example:
+      <br>
+      Input: 5 != 0
+      <br>
+      Output: 1
+      <br><br><br>
+      
+      <strong>Is Lower (Comparison)</strong> :
+      <br>
+      Compares if a Number is Lower than Another
+      <br>
+      Recives : " (Equation) < (Equation) "
+      <br>
+      Returns : " 0 " or " 1 "
+      <br><br>
+      Example:
+      <br>
+      Input: 2*10 < 30
+      <br>
+      Output: 1
+      <br><br><br>
+      
+      <strong>Is Highter (Comparison)</strong> :
+      <br>
+      Compares if a Number is Highter than Another
+      <br>
+      Recives : " (Equation) > (Equation) "
+      <br>
+      Returns : " 0 " or " 1 "
+      <br><br>
+      Example:
+      <br>
+      Input: 2*10 > 30
+      <br>
+      Output: 0
+      <br><br><br>
+      
+      <strong>Is Lower Or Equal (Comparison)</strong> :
+      <br>
+      Compares if a Number is Lower or Equal than Another
+      <br>
+      Recives : " (Equation) <= (Equation) "
+      <br>
+      Returns : " 0 " or " 1 "
+      <br><br>
+      Example:
+      <br>
+      Input: 5+1 <= 6
+      <br>
+      Output: 1
+      <br><br><br>
+      
+      <strong>Is Highter Or Equal (Comparison)</strong> :
+      <br>
+      Compares if a Number is Highter or Equal than Another
+      <br>
+      Recives : " (Equation) >= (Equation) "
+      <br>
+      Returns : " 0 " or " 1 "
+      <br><br>
+      Example:
+      <br>
+      Input: 5+1 >= 6
+      <br>
+      Output: 1
+      <br><br><br>
+      
+      <strong>And (Comparison)</strong> :
+      <br>
+      Returns Zero If Either of Values is Equal or Less Than Zero, And Returns One if Not
+      <br>
+      Recives : " (Equation) && (Equation)"
+      <br>
+      Returns : " 0 " or " 1 "
+      <br><br>
+      Example:
+      <br>
+      Input: 3<4 && 5<4
+      <br>
+      Output: 0
+      <br><br><br>
+      
+      <strong>Or (Comparison)</strong> :
+      <br>
+      Returns One If Either of Values is Highter Than Zero, And Returns Zero if Both are Zero
+      <br>
+      Recives : " (Equation) || (Equation)"
+      <br>
+      Returns : " 0 " or " 1 "
+      <br><br>
+      Example:
+      <br>
+      Input: 3<4 && 5<4
+      <br>
+      Output: 1
+      <br><br><br>
+      
+      <strong>PI</strong> :
+      <br>
+      Returns The Value Of PI
+      <br>
+      Recives : " PI "
+      <br>
+      Returns : " 3.141592653589793 "
+      <br><br>
+      Example:
+      <br>
+      Input: PI
+      <br>
+      Output: 3.141592653589793
+      <br><br><br>
+      
+      <strong>Absolute</strong> :
+      <br>
+      Returns The Positive Version of any number
+      <br>
+      Recives : " | (Equation) | "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: | -5 |
+      <br>
+      Output: 5
+      <br><br><br>
+      
+      <strong>Join</strong> :
+      <br>
+      Returns a Single Array Containing All The Values Of Both Arrays
+      <br>
+      Recives : " (Equation) join (Equation) "
+      <br>
+      Returns : " (Result) "
+      <br><br>
+      Example:
+      <br>
+      Input: [1,2,3] join [4,5,6]
+      <br>
+      Output: [1,2,3,4,5,6]
+      <br><br><br>
+      
+      <strong>Set Left</strong> :
+      <br>
+      Sets The Value Of The Left Variable To The Value On The Right, And Returns The Value (Just Returns The Value if it is not a Variable)
+      <br>
+      Recives : " (Variable) <- (Equation) "
+      <br>
+      Returns : " (Variable) " or " (Equation) "
+      <br><br>
+      Example:
+      <br>
+      Input: (X : 0) <- 3
+      <br>
+      Output: (X : 3)
+      <br><br><br>
+      
+      <strong>Set Right</strong> :
+      <br>
+      Sets The Value Of The Right Variable To The Value On The Left, And Returns The Value (Just Returns The Value if it is not a Variable)
+      <br>
+      Recives : " (Equation) -> (Variable)"
+      <br>
+      Returns : " (Variable) " or " (Equation) "
+      <br><br>
+      Example:
+      <br>
+      Input:   3 -> (X : 0)
+      <br>
+      Output: (X : 3)
+      <br><br><br>
+      
+      <strong>Repeat</strong> :
+      <br>
+      Repeats The Inside Node Multiple Times
+      <br>
+      Recives : " repeat{ (Equation) : (Equation) } "
+      <br>
+      Returns : " [(Result),(Result),(Result)...] "
+      <br><br>
+      Example:
+      <br>
+      Input: repeat{ 5 : ( (X : 0) + 1 -> (X : 0) ) }
+      <br>
+      Output: [1,2,3,4,5]
+      <br><br><br>
+      
+      <strong>Ignore</strong> :
+      <br>
+      Runs The Inside Node but Returns 0 Anyway
+      <br>
+      Recives : " ignore{ (Equation) } "
+      <br>
+      Returns : " 0 "
+      <br><br>
+      Example:
+      <br>
+      Input: ignore{ X <- X+1 }
+      <br>
+      Output: 0 (But X Recives The Change)
+      <br><br><br>
+      
+      <strong>Create Variable</strong> :
+      <br>
+      Creates a Variable inside the Equation (Does Not Result in Tokens)
+      <br>
+      Recives : " new( (Name) : (Value) ) "
+      <br>
+      Returns : " "
+      <br><br>
+      Example:
+      <br>
+      Input: new( X : 0)
+      <br>
+      Output: 
+      <br><br><br>
+      
+      <strong>Function</strong> :
+      <br>
+      Recives a Comparison,and Returns the first Value if True, The second if false
+      <br>
+      Recives : " { (Equation) : (Equation_1) , (Equation_2) } "
+      <br>
+      Returns : " (Equation_1) " or " (Equation_2) "
+      <br><br>
+      Example:
+      <br>
+      Input: {5+2 < 0 : 90+15 , 10}
+      <br>
+      Output: 10
+      <br><br><br>
+      
+      <strong>Range</strong> :
+      <br>
+      Returns a Array With All The Elements Between The Two Values With Steps
+      <br>
+      Recives : " _ (Minimum_Equation) , (Maximum_Equation) , (Step_Equation) _ "
+      <br>
+      Returns : " [(Result),(Result),(Result)....] "
+      <br><br>
+      Example:
+      <br>
+      Input: _4,10,2_
+      <br>
+      Output: [4,6,8,10]
+      <br><br><br>
+      
+      <strong>Dice</strong> :
+      <br>
+      Returns Multiple or Just One Random Value
+      <br>
+      Recives : " ?{ (Maximum_Equation) , (Amount_Equation) , (Step_Equation) , (Minimum_Equation) } "
+      <br>
+      Returns : " [(Result),(Result),(Result)....] "
+      <br><br>
+      Example:
+      <br>
+      Input: ?{6,2,1,1}
+      <br>
+      Output: [5,2]
+      <br><br><br>
+   </p>
+   
+</body>
+
+</html>
